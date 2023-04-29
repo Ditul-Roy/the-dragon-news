@@ -6,7 +6,10 @@ import { AuthContext } from '../../../Provider/AuthProder/AuthProvider';
 import { FaUser } from 'react-icons/fa';
 
 const NavigationBar = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut =() => {
+        logOut()
+    }
     return (
         <Container>
             <div className='d-flex text-center ' >
@@ -28,7 +31,7 @@ const NavigationBar = () => {
                             {user ?
                                 <>
                                     <FaUser className='me-2 mt-2'></FaUser>
-                                    <Link className='btn btn-secondary'>LogOut</Link>
+                                    <button onClick={handleLogOut} className='btn btn-secondary'>LogOut</button>
                                 </> :
                                 <Link className='btn btn-secondary' to="/login">logIn</Link>
                             }
